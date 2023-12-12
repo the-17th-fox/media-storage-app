@@ -1,0 +1,5 @@
+Implement auto injection using attributes or marking with interface:
+	[ScopedDependency(typof(ISomeService))]
+	class SomeService : ISomeService {}
+	or
+	class SomeService : ISomeService, IScopedDependency {}
