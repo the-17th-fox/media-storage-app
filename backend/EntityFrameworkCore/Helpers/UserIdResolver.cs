@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Http;
 
 namespace EntityFrameworkCore.Helpers;
 
-internal interface IUserIdResolver
+public interface IUserIdResolver
 {
 	Guid Resolve();
 }
 
-internal class UserIdResolver : IUserIdResolver
+public class UserIdResolver : IUserIdResolver
 {
 	public UserIdResolver(IHttpContextAccessor httpContextAccessor)
 	{
