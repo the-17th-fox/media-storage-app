@@ -18,8 +18,13 @@ public class MediaStorageDbContext : IdentityDbContext<User, IdentityRole<Guid>,
 		_userIdResolver = userIdResolver ?? throw new ArgumentNullException(nameof(userIdResolver));
 	}
 
-    public DbSet<Media> Media => Set<Media>();
-	public DbSet<Tag> Tags => Set<Tag>();
+	public DbSet<Gif> Gifs { get; set; } = null!;
+	public DbSet<Image> Images { get; set; } = null!;
+	public DbSet<Video> Videos { get; set; } = null!;
+	
+	public DbSet<MediaCatalog> MediaCatalogs { get; set; } = null!;
+	
+	public DbSet<Tag> Tags { get; set; } = null!;
 	
 	private readonly IUserIdResolver _userIdResolver;
 

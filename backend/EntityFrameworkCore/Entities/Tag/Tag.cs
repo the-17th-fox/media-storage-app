@@ -5,5 +5,5 @@
 /// </summary>
 public class Tag : BaseEntity<string>
 {
-    public virtual List<Media>? Media { get; set; }
+    public List<MediaCatalog>? Media { get; set; }
 }
