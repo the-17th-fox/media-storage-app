@@ -3,3 +3,7 @@ Implement auto injection using attributes or marking with interface:
 	class SomeService : ISomeService {}
 	or
 	class SomeService : ISomeService, IScopedDependency {}
+	
+Add resolving Id style:
+	for images: IMG**** and so on...
+	
