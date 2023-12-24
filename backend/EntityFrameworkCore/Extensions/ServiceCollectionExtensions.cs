@@ -1,6 +1,7 @@
 ﻿using EntityFrameworkCore.Helpers;
 using EntityFrameworkCore.Infrastructure;
 using EntityFrameworkCore.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,7 +13,7 @@ public static class ServiceCollectionExtensions
 		this IServiceCollection services, string connectionString)
 	{
 		services.AddDbContext<MediaStorageDbContext>(opt => opt.UseSqlServer(connectionString));
-
+			
 		services.AddScoped<IUserIdResolver, UserIdResolver>();
 
 		services.AddScoped(typeof(IBaseRepository<,>), typeof(BaseRepository<,>));

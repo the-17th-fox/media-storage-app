@@ -6,4 +6,5 @@ public class SaveTagDto
 {
     public string OldTagName { get; set; }
     public string NewTagName { get; set; }
+    public bool IsNew { get; set; }
 }

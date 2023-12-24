@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EntityFrameworkCore.Entities;
 
-public class MediaCatalog : BaseEntity<string>
+public class MediaCatalog : BaseEntity<int>
 {
     public string MediaReferenceId { get; set; }
     public MediaReferenceTable? MediaReferenceTable { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
 
 namespace EntityFrameworkCore.Helpers;
 
@@ -17,12 +18,19 @@ public class UserIdResolver : IUserIdResolver
 	}
 	
 	private readonly IHttpContextAccessor _httpContextAccessor;
+	private const string AutorizationHeader = "Authorization";
 
 	public Guid Resolve()
 	{
 		var requestHeaders = _httpContextAccessor.HttpContext.Request.Headers;
 
-		requestHeaders.TryGetValue("Authorization", out var bearerToken);
+		if (!requestHeaders.ContainsKey(AutorizationHeader))
+		{
+			Console.WriteLine("No AUTH HEADER");
+			return Guid.Empty;
+		}
+		
+		requestHeaders.TryGetValue(AutorizationHeader, out var bearerToken);
 
 		var jwtToken = bearerToken.ToString().Remove(startIndex: 0, count: 7); // removing 'Bearer' part
 

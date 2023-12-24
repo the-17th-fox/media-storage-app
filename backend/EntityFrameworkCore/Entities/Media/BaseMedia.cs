@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EntityFrameworkCore.Entities;
 
-public abstract class BaseMedia : BaseEntity<string>
+public abstract class BaseMedia : BaseEntity<int>
 {
 	public short SizeHorizontal { get; set; }
 	public short SizeVertical { get; set; }
@@ -23,12 +23,12 @@ public abstract class BaseMedia : BaseEntity<string>
 	public MediaModerationStatus? ModerationStatus { get; set; }
 }
 
-public class BaseMediaConfiguration : IEntityTypeConfiguration<BaseMedia>
-{
-	public void Configure(EntityTypeBuilder<BaseMedia> builder)
-	{
-		builder
-			.Property(x => x.Source)
-			.HasMaxLength(2048);
-	}
-}
+// public abstract class BaseMediaConfiguration : IEntityTypeConfiguration<BaseMedia>
+// {
+// 	public void Configure(EntityTypeBuilder<BaseMedia> builder)
+// 	{
+// 		builder
+// 			.Property(x => x.Source)
+// 			.HasMaxLength(2048);
+// 	}
+// }

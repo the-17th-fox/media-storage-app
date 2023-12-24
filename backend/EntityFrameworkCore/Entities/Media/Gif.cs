@@ -5,21 +5,20 @@ namespace EntityFrameworkCore.Entities;
 
 public class Gif : BaseMedia
 {
-	public string? ParentMediaId { get; set; }
+	public int? ParentMediaId { get; set; }
 	public Gif? ParentMedia { get; set; }
 
 	public List<Gif>? ChildMedia { get; set; }
-	public List<Tag>? Tags { get; set; }
 }
 
-public class GifConfiguration : IEntityTypeConfiguration<Gif>
+public class GifConfiguration : /*BaseMediaConfiguration,*/ IEntityTypeConfiguration<Gif>
 {
 	public void Configure(EntityTypeBuilder<Gif> builder)
 	{
 		builder
-			.HasMany(x => x.Tags)
-			.WithMany();
-
+			.Property(x => x.Source)
+			.HasMaxLength(2048);
+        
 		builder
 			.HasMany(x => x.ChildMedia)
 			.WithOne(x => x.ParentMedia)

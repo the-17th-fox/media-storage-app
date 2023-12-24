@@ -1,5 +1,6 @@
 ﻿using EntityFrameworkCore.Extensions;
 using Shared.Extensions;
+using UseCases.Extensions;
 
 namespace Web.Extensions;
 
@@ -9,10 +10,12 @@ public static class ServiceCollectionExtensions
 	{
 		services.AddEntityFrameworkCore(configuration);
 
+		services.AddUseCasesDependencies();
+
 		return services;
 	}
 
-	private static IServiceCollection AddEntityFrameworkCore(this IServiceCollection services, IConfiguration configuration)
+	private static void AddEntityFrameworkCore(this IServiceCollection services, IConfiguration configuration)
 	{
 		var connectionString = configuration.GetConnectionString("Database");
 
@@ -20,7 +23,5 @@ public static class ServiceCollectionExtensions
 			throw new ArgumentNullException(nameof(connectionString));
 
 		services.AddEntityFrameworkCoreDependencies(connectionString);
-
-		return services;
     }
 }

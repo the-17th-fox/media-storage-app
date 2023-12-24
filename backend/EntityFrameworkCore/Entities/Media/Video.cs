@@ -5,21 +5,20 @@ namespace EntityFrameworkCore.Entities;
 
 public class Video : BaseMedia
 {
-	public string? ParentMediaId { get; set; }
+	public int? ParentMediaId { get; set; }
 	public Video? ParentMedia { get; set; }
 
 	public List<Video>? ChildMedia { get; set; }
-	public List<Tag>? Tags { get; set; }
 }
 
-public class VideoConfiguration : IEntityTypeConfiguration<Video>
+public class VideoConfiguration : /*BaseMediaConfiguration,*/ IEntityTypeConfiguration<Video>
 {
 	public void Configure(EntityTypeBuilder<Video> builder)
 	{
 		builder
-			.HasMany(x => x.Tags)
-			.WithMany();
-
+			.Property(x => x.Source)
+			.HasMaxLength(2048);
+		
 		builder
 			.HasMany(x => x.ChildMedia)
 			.WithOne(x => x.ParentMedia)

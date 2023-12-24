@@ -5,21 +5,20 @@ namespace EntityFrameworkCore.Entities;
 
 public class Image : BaseMedia
 {
-	public string? ParentMediaId { get; set; }
+	public int? ParentMediaId { get; set; }
 	public Image? ParentMedia { get; set; }
 
 	public List<Image>? ChildMedia { get; set; }
-	public List<Tag>? Tags { get; set; }
 }
 
-public class ImageConfiguration : IEntityTypeConfiguration<Image>
+public class ImageConfiguration : /*BaseMediaConfiguration,*/ IEntityTypeConfiguration<Image>
 {
 	public void Configure(EntityTypeBuilder<Image> builder)
 	{
 		builder
-			.HasMany(x => x.Tags)
-			.WithMany();
-
+			.Property(x => x.Source)
+			.HasMaxLength(2048);
+		
 		builder
 			.HasMany(x => x.ChildMedia)
 			.WithOne(x => x.ParentMedia)

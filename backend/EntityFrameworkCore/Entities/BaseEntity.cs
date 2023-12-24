@@ -28,5 +28,19 @@ public class BaseEntityConfiguration<TKey> : IEntityTypeConfiguration<BaseEntity
 	public void Configure(EntityTypeBuilder<BaseEntity<TKey>> builder)
 	{
 		builder.HasKey(e => e.Id);
+		
+		builder
+			.Property(e => e.CreatedAt)
+			.HasDefaultValueSql("GETUTCDATE()")
+			.ValueGeneratedOnAdd();
+
+		builder
+			.Property(e => e.UpdatedAt)
+			.HasDefaultValueSql("GETUTCDATE()")
+			.ValueGeneratedOnAddOrUpdate();
+
+		builder
+			.Property(e => e.IsDeleted)
+			.HasDefaultValue(false);
 	}
 }

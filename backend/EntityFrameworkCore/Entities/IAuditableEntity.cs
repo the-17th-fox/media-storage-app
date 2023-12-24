@@ -15,23 +15,3 @@ public interface IAuditableEntity
 	public Guid? DeletedBy { get; set; }
 	public bool IsDeleted { get; set; }
 }
-
-public class AuditableEntityConfiguration : IEntityTypeConfiguration<IAuditableEntity>
-{
-	public void Configure(EntityTypeBuilder<IAuditableEntity> builder)
-	{
-		builder
-			.Property(e => e.CreatedAt)
-			.HasDefaultValueSql("GETUTCDATE()")
-			.ValueGeneratedOnAdd();
-
-		builder
-			.Property(e => e.UpdatedAt)
-			.HasDefaultValueSql("GETUTCDATE()")
-			.ValueGeneratedOnAddOrUpdate();
-
-		builder
-			.Property(e => e.IsDeleted)
-			.HasDefaultValue(false);
-    }
-}
