@@ -31,12 +31,12 @@ public class BaseEntityConfiguration<TKey> : IEntityTypeConfiguration<BaseEntity
 		
 		builder
 			.Property(e => e.CreatedAt)
-			.HasDefaultValueSql("GETUTCDATE()")
+			.HasDefaultValueSql("SYSDATETIMEOFFSET()")
 			.ValueGeneratedOnAdd();
 
 		builder
 			.Property(e => e.UpdatedAt)
-			.HasDefaultValueSql("GETUTCDATE()")
+			.HasDefaultValueSql("SYSDATETIMEOFFSET()")
 			.ValueGeneratedOnAddOrUpdate();
 
 		builder

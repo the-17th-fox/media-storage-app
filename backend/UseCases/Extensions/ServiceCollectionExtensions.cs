@@ -3,6 +3,7 @@ using EntityFrameworkCore.Helpers;
 using EntityFrameworkCore.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using UseCases.Tags;
+using UseCases.Tags.Helpers;
 
 namespace UseCases.Extensions;
 
@@ -20,7 +21,7 @@ public static class ServiceCollectionExtensions
 
     private static IServiceCollection AddUtilities(this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(Profile));
+        services.AddAutoMapper(typeof(TagsMapper));
 
         return services;
     }

@@ -32,7 +32,10 @@ public class TagsService : ITagsService
 
         tag = await _repository.InsertAsync(tag, autoSave: true, cancellationToken);
 
-        return new TagDto(tag.Id);
+        return new TagDto()
+        {
+            TagName = tag.Id
+        };
     }
 
     public async Task<TagDto[]> GetAllAsync(CancellationToken cancellationToken = default)
