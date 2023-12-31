@@ -2,6 +2,6 @@
 
 public enum MediaRating
 {
-	SFW,
-	NSFW
+	SFW = 100,
+	NSFW = 200
 }

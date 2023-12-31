@@ -2,7 +2,7 @@
 
 public enum MediaModerationStatus
 {
-	AwaitingApprove,
-	Suspended,
-	Approved,
+	AwaitingApprove = 100,
+	Suspended = 200,
+	Approved = 300,
 }

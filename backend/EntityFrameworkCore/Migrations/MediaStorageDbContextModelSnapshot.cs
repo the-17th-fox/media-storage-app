@@ -48,8 +48,8 @@ namespace EntityFrameworkCore.Migrations
                     b.Property<int>("LikesAmount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ModerationStatus")
-                        .HasColumnType("int");
+                    b.Property<string>("ModerationStatus")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("OnCloudDrive")
                         .HasColumnType("bit");
@@ -57,8 +57,8 @@ namespace EntityFrameworkCore.Migrations
                     b.Property<int?>("ParentMediaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Rating")
-                        .HasColumnType("int");
+                    b.Property<string>("Rating")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<short>("SizeHorizontal")
                         .HasColumnType("smallint");
@@ -113,8 +113,8 @@ namespace EntityFrameworkCore.Migrations
                     b.Property<int>("LikesAmount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ModerationStatus")
-                        .HasColumnType("int");
+                    b.Property<string>("ModerationStatus")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("OnCloudDrive")
                         .HasColumnType("bit");
@@ -122,8 +122,8 @@ namespace EntityFrameworkCore.Migrations
                     b.Property<int?>("ParentMediaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Rating")
-                        .HasColumnType("int");
+                    b.Property<string>("Rating")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<short>("SizeHorizontal")
                         .HasColumnType("smallint");
@@ -179,8 +179,8 @@ namespace EntityFrameworkCore.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MediaReferenceTable")
-                        .HasColumnType("int");
+                    b.Property<string>("MediaReferenceTable")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("datetimeoffset");
@@ -197,6 +197,9 @@ namespace EntityFrameworkCore.Migrations
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Category")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetimeoffset");
@@ -337,8 +340,8 @@ namespace EntityFrameworkCore.Migrations
                     b.Property<int>("LikesAmount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ModerationStatus")
-                        .HasColumnType("int");
+                    b.Property<string>("ModerationStatus")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("OnCloudDrive")
                         .HasColumnType("bit");
@@ -346,8 +349,8 @@ namespace EntityFrameworkCore.Migrations
                     b.Property<int?>("ParentMediaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Rating")
-                        .HasColumnType("int");
+                    b.Property<string>("Rating")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<short>("SizeHorizontal")
                         .HasColumnType("smallint");

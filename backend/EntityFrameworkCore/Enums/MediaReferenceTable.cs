@@ -4,7 +4,7 @@ namespace EntityFrameworkCore.Enums;
 
 public enum MediaReferenceTable
 {
-    Image,
-    Video,
-    Gif
+    Image = 100,
+    Video = 200,
+    Gif = 300
 }
