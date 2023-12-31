@@ -1,0 +1,18 @@
+.container {
+    height: 100%;
+    display: flex;
+}
+
+app-left-container {
+    height: 100%;
+    width: 20%;
+    background-color: #3b3b3b;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+app-media-container {
+    height: 100%;
+    width: 100%;
+    padding: 0.5rem;
+}

@@ -1,0 +1,8 @@
+<div class="tags-container">
+    <button
+        type="button" 
+        *ngFor="let tag of tags"
+        class="items"
+        (click)="handleTagPicking(tag.name)"
+    >{{ tag.name }}</button>
+</div>

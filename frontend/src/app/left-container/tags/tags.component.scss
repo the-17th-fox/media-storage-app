@@ -1,0 +1,37 @@
+.tags-container {
+    background-color: #525252;
+    border-radius: 0.2rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-height: 100%;
+    max-width: 100%;
+
+
+    .items {
+        text-align: center;
+        margin: 0.1rem;
+        padding: 0.3rem;
+        background-color: rgba(103, 145, 6, 0.37);
+        color: #a7a6a6;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        height: 100%;
+        transition: background-color 0.5s;
+        width: 30%;
+    
+        &:hover {
+            background-color: rgba(103, 145, 6, 0.699);
+            box-shadow: 0 0 1rem rgba(103, 145, 6, 0.699);
+        }
+    }
+
+    a {
+        color: #a7a6a6;
+        padding: 0.2rem;
+    }
+}

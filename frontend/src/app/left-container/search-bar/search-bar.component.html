@@ -1,0 +1,9 @@
+<div class="search-bar">
+    <input 
+        [(ngModel)]="searchValue"
+        type="text" 
+        placeholder="Search" 
+        (input)="onSearchInputChange($event)"
+    >
+    <button (click)="onSearch()">Search</button>
+</div>

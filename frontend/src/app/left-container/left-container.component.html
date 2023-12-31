@@ -1,0 +1,11 @@
+<div >
+    <app-search-bar 
+        (searchInputChanged)="handleSearchInputChanged($event)"
+        (searchButtonClicked)="handleSearch($event)"
+    ></app-search-bar>
+    
+    <app-tags
+        [tags]="tags"
+        (onTagPicking)="handleTagPicking($event)"
+    ></app-tags>
+</div>
