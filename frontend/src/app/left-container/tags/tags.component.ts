@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TagDto } from './tag';
+import { TagDto } from '../../models/tags';
 
 
 

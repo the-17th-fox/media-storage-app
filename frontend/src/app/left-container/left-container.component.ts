@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { TagCategory, TagDto } from '../models/tags';
 
 @Component({
   selector: 'app-left-container',
@@ -7,10 +8,10 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
   styleUrls: ['./left-container.component.scss']
 })
 export class LeftContainerComponent {
-  tags = [
-    { name: 'Yanmar' },
-    { name: 'Dog' },
-    { name: 'Cat' },
+  tags: TagDto[] = [
+    { name: 'Yanmar', category: TagCategory.General },
+    { name: 'Dog', category: TagCategory.General },
+    { name: 'Cat', category: TagCategory.General },
   ];
 
   @ViewChild(SearchBarComponent) searchBarComponent: SearchBarComponent;
