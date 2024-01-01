@@ -6,6 +6,7 @@
             *ngFor="let tag of tags"
             class="items"
             (click)="handleTagPicking(tag.name)"
+            [ngStyle]="{'color': getTagColor(tag.category)}"
         >{{ tag.name }}</button>
     </div>
 </div>

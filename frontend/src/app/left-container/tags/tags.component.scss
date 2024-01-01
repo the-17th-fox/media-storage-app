@@ -16,10 +16,13 @@
     .items-container {  
         color: inherit;
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        justify-content: space-between;
-        max-width: inherit;
-        max-height: inherit;
+        gap: 0.2rem;
+        flex-shrink: 0;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: auto;
 
         .items {
             text-align: center;
@@ -29,15 +32,17 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 14px;
-            height: 100%;
+            font-size: 1rem;
             transition: background-color 0.5s;
-            width: 30%;
+            font-weight: bold;
             color: inherit;
+            flex-grow: 1;
+            max-width: 100%;
+
         
             &:hover {
                 background-color: rgba(103, 145, 6, 0.699);
-                box-shadow: 0 0 1rem rgba(103, 145, 6, 0.699);
+                box-shadow: 0 0 0.5rem rgba(103, 145, 6, 0.699);
             }
         }
     

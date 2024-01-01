@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TagDto } from '../../models/tags';
+import { TagCategory, TagDto } from '../../models/tags';
 
 
 
@@ -22,5 +22,21 @@ export class TagsComponent implements OnInit {
   
   handleTagPicking(tag: string) {
     this.onTagPicking.emit(tag);
+  }
+
+  getTagColor(category: TagCategory) {
+    switch(category) {
+      case TagCategory.General:
+        return "cyan";
+
+      case TagCategory.Author:
+        return "orange";
+
+      case TagCategory.Quality:
+        return "blue";
+
+      default: 
+        return "white";
+    }
   }
 }

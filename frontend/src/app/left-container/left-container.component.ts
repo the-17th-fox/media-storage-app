@@ -1,20 +1,29 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { TagCategory, TagDto } from '../models/tags';
+import { TagsService } from '../services/tags.service';
 
 @Component({
   selector: 'app-left-container',
   templateUrl: './left-container.component.html',
   styleUrls: ['./left-container.component.scss']
 })
-export class LeftContainerComponent {
-  tags: TagDto[] = [
-    { name: 'Yanmar', category: TagCategory.General },
-    { name: 'Dog', category: TagCategory.General },
-    { name: 'Cat', category: TagCategory.General },
-  ];
+export class LeftContainerComponent implements OnInit {
+  constructor(
+    private tagsService: TagsService
+  ) { }
+
+  tags: TagDto[] = [];
 
   @ViewChild(SearchBarComponent) searchBarComponent: SearchBarComponent;
+
+  ngOnInit(): void {
+    this.tagsService
+      .getAll()
+      .subscribe(resp => {
+        this.tags = resp;
+      })
+  }
 
   handleTagPicking(tag: string) {
     this.searchBarComponent.appendToSearchValue(tag);

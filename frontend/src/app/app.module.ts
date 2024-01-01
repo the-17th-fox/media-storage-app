@@ -5,16 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LeftContainerModule } from './left-container/left-container.module';
 import { MediaContainerModule } from './media-container/media-container.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule  ,
     LeftContainerModule,
-    MediaContainerModule
+    MediaContainerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
