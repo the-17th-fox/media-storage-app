@@ -1,4 +1,5 @@
 ﻿using EntityFrameworkCore.Extensions;
+using Microsoft.IdentityModel.Tokens;
 using Shared.Extensions;
 using UseCases.Extensions;
 
@@ -23,5 +24,36 @@ public static class ServiceCollectionExtensions
 			throw new ArgumentNullException(nameof(connectionString));
 
 		services.AddEntityFrameworkCoreDependencies(connectionString);
+		
+		services.ConfigureAppCors(configuration);
     }
+
+	private static void ConfigureAppCors(this IServiceCollection services, IConfiguration configuration)
+	{
+		var policyName = configuration
+			.GetSection($"CorsConfiguration:PolicyName")
+			.Get<string>();
+		
+		var allowedOrigins = configuration
+			.GetSection($"CorsConfiguration:AllowedCorsOrigins")
+			.Get<string[]>();
+
+		if (policyName.IsNullOrWhiteSpace() || allowedOrigins.IsNullOrEmpty())
+		{
+			Console.WriteLine("Missing CORS policy name or empty allowed origins list");
+		}
+		
+		services.AddCors(options =>
+		{
+			options.AddPolicy(name: policyName!,
+				policy  =>
+				{
+					policy
+						.WithOrigins(allowedOrigins!)
+						.AllowAnyHeader()
+						.AllowAnyMethod()
+						.AllowAnyOrigin();
+				});
+		});
+	}
 }

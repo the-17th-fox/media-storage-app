@@ -1,6 +1,9 @@
+using EntityFrameworkCore.Enums;
+
 namespace UseCases.Tags;
 
 public class TagDto
 {
-    public string TagName { get; set; }
+    public string Name { get; set; }
+    public TagCategory Category { get; set; }
 }

@@ -1,3 +1,4 @@
+using Shared.Extensions;
 using Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,5 +25,12 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+var corsPolicyName = configuration
+    .GetSection($"CorsConfiguration:PolicyName")
+    .Get<string>();
+
+if (!corsPolicyName.IsNullOrWhiteSpace())
+    app.UseCors(corsPolicyName);
 
 app.Run();
