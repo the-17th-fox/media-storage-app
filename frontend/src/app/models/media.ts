@@ -1,3 +1,17 @@
+export interface SaveMediaDto {
+    sizeHorizontal: number;
+    sizeVertical: number;
+    sizeInKb: number;
+    source: string;
+    onCloudDrive: boolean;
+    likesAmount: number;
+    rating: MediaRating;
+    moderationStatus: MediaModerationStatus;
+    parentMediaId: number;
+    type: MediaType;
+    isNew: boolean;
+}
+
 export interface MediaDto {
     sizeHorizontal: number;
     sizeVertical: number;
@@ -8,8 +22,7 @@ export interface MediaDto {
     rating: MediaRating;
     moderationStatus: MediaModerationStatus;
     parentMediaId: number;
-    mediaType: MediaType;
-    isNew: boolean;
+    type: MediaType;
 }
 
 export enum MediaRating {
