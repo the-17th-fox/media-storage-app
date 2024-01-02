@@ -1,10 +1,11 @@
+using EntityFrameworkCore.Entities.Base;
 using EntityFrameworkCore.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EntityFrameworkCore.Entities;
 
-public class MediaCatalog : BaseEntity<int>
+public class MediaCatalog : AuditableEntity<int>
 {
     public string MediaReferenceId { get; set; }
     public MediaReferenceTable? MediaReferenceTable { get; set; }

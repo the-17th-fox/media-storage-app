@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EntityFrameworkCore.Entities;
+namespace EntityFrameworkCore.Entities.Base;
 
-public class User : IdentityUser<Guid>, IAuditableEntity
+public abstract class AuditableEntity<TKey> : BaseEntity<TKey>, IAuditableEntity
 {
 	public DateTime CreatedAt { get; set; }
 	public Guid CreatedBy { get; set; }
@@ -17,11 +16,12 @@ public class User : IdentityUser<Guid>, IAuditableEntity
 	public bool IsDeleted { get; set; }
 }
 
-public class UserConfiguration : IEntityTypeConfiguration<User>
+public abstract class AuditableEntityConfiguration<TEntity, TKey> : BaseEntityConfiguration<TEntity, TKey>
+	where TEntity: AuditableEntity<TKey>
 {
-	public void Configure(EntityTypeBuilder<User> builder)
+	public override void Configure(EntityTypeBuilder<TEntity> builder)
 	{
-		builder.HasKey(x => x.Id);
+		base.Configure(builder);
 		
 		builder
 			.Property(e => e.CreatedAt)

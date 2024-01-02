@@ -1,4 +1,6 @@
-﻿namespace EntityFrameworkCore.Entities;
+﻿using EntityFrameworkCore.Entities.Base;
+
+namespace EntityFrameworkCore.Entities;
 
 public class Gif : BaseMedia<Gif>
 {

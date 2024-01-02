@@ -1,4 +1,5 @@
-﻿using EntityFrameworkCore.Enums;
+﻿using EntityFrameworkCore.Entities.Base;
+using EntityFrameworkCore.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -7,7 +8,7 @@ namespace EntityFrameworkCore.Entities;
 /// <summary>
 /// Id - represents tag's name
 /// </summary>
-public class Tag : BaseEntity<string>
+public class Tag : AuditableEntity<string>
 {
     public TagCategory? Category { get; set; }
     public List<MediaCatalog>? Media { get; set; }

@@ -96,7 +96,7 @@ public class MediaStorageDbContext : IdentityDbContext<User, IdentityRole<Guid>,
 		entry.State = EntityState.Modified;
 		entity.IsDeleted = true;
 		entity.DeletedBy = _userIdResolver.Resolve();
-		entity.DeletedAt = DateTimeOffset.UtcNow;
+		entity.DeletedAt = DateTime.UtcNow;
 	}
 
 	private void PerformUpdate(EntityEntry entry)

@@ -1,10 +1,11 @@
-﻿using EntityFrameworkCore.Enums;
+﻿using EntityFrameworkCore.Entities.Base;
+using EntityFrameworkCore.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EntityFrameworkCore.Entities;
 
-public abstract class BaseMedia<TEntity> : BaseEntity<int> where TEntity: BaseMedia<TEntity>
+public abstract class BaseMedia<TEntity> : AuditableEntity<int> where TEntity: BaseMedia<TEntity>
 {
 	public short SizeHorizontal { get; set; }
 	public short SizeVertical { get; set; }
@@ -28,10 +29,13 @@ public abstract class BaseMedia<TEntity> : BaseEntity<int> where TEntity: BaseMe
 	public List<TEntity>? ChildMedia { get; set; }
 }
 
-public class BaseMediaConfiguration<TMedia> : IEntityTypeConfiguration<TMedia> where TMedia: BaseMedia<TMedia>
+public class BaseMediaConfiguration<TMedia> : AuditableEntityConfiguration<TMedia, int>
+	where TMedia: BaseMedia<TMedia>
 {
-	public void Configure(EntityTypeBuilder<TMedia> builder)
+	public override void Configure(EntityTypeBuilder<TMedia> builder)
 	{
+		base.Configure(builder);
+		
 		builder
 			.Property(x => x.Source)
 			.HasMaxLength(2048);
