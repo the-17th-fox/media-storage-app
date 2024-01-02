@@ -26,8 +26,10 @@ public class TagsService : ITagsService
         CancellationToken cancellationToken = default)
     {
         var tag = _mapper.Map<Tag>(saveTagDto);
-
-        tag = await _repository.InsertAsync(tag, autoSave: true, cancellationToken);
+        
+        tag = saveTagDto.IsNew
+            ? await _repository.InsertAsync(tag, autoSave: true, cancellationToken)
+            : await _repository.UpdateAsync(tag, autoSave: true, cancellationToken);
 
         return _mapper.Map<TagDto>(tag);
     }
